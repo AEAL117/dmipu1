@@ -35,14 +35,14 @@ export default function HomeScreen() {
 
     return (
         <View style={styles.container}>
-            <Text>Name</Text>
+            <Text>Nombre</Text>
             <TextInput
                 onChangeText={(text) =>
                     setBook((current) => ({ ...current, name: text }))
                 }
                 style={styles.input}
             />
-            <Text>Description</Text>
+            <Text>Descripción</Text>
             <TextInput
                 onChangeText={(text) =>
                     setBook((current) => ({ ...current, description: text }))
@@ -67,7 +67,7 @@ export default function HomeScreen() {
                 }
                 style={styles.input}
             />
-            <Text>Categoria</Text>
+            <Text>Categoría</Text>
             <TextInput
                 onChangeText={(text) =>
                     setBook((current) => ({ ...current, cat: text }))
@@ -75,7 +75,7 @@ export default function HomeScreen() {
                 style={styles.input}
             />
 
-            <Text>Fecha de Publicacion</Text>
+            <Text>Fecha de Publicación</Text>
             <TextInput
                 onChangeText={(text) =>
                     setBook((current) => ({ ...current, published: text }))

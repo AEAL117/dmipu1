@@ -10,8 +10,8 @@ export default function SettingsScreen({onPress}){
     const {usuario} = useContext(GlobalContext);
     return(
         <View style={styles.container}>
-            <Text>Hola! {usuario}</Text>      
-            <ButtonComponent title="LogOut" onPress={onPress} color="#ff3f4f"/>
+            <Text>Nombre de ususario: {usuario}</Text>      
+            <ButtonComponent title="Cerrar sesión" onPress={onPress} color="#ff3f4f"/>
         </View>
     )
 }

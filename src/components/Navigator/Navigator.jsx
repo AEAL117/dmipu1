@@ -43,7 +43,7 @@ export default function MainNavigator({user}) {
                   iconName = focused
                     ? "ios-book"
                     : "ios-book-outline";
-                } else if (route.name === "Informacion Alumnos"){
+                } else if (route.name === "Perfil"){
                   iconName = "ios-person";
                 }
   
@@ -61,7 +61,7 @@ export default function MainNavigator({user}) {
               component={CatalogoScreen}
               />
               <Tab.Screen 
-              name="Informacion Alumnos"
+              name="Perfil"
               children={(props) => (
                 <SettingsScreen {...props} onPress={() => logout()} user={user}/>
               )}
