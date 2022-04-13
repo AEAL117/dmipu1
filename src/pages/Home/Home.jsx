@@ -18,7 +18,6 @@ export default function HomeScreen() {
     }
 
     const addData = () => {
-
         createBook(book.name, book.description, book.estatus, book.ISBN, book.cat, book.published)
     }
 

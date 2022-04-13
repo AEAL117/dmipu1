@@ -1,6 +1,6 @@
 import { API, graphqlOperation } from "aws-amplify";
 import { getTodo, listTodos } from "../graphql/queries";
-import { createTodo, updateBook, deleteBook } from "../graphql/mutations";
+import { createTodo, updateTodo, deleteTodo } from "../graphql/mutations";
 import { onCreateTodo } from "../graphql/subscriptions";
 
 const list = async() => {
@@ -23,6 +23,15 @@ const get = async(bookID) => {
     }
 }
 
+const update=async(Todo)=>{
+    try {
+        const updatedBook = await API.graphql(graphqlOperation(updateTodo,{input: Todo}));
+        console.log(updatedBook);
+        return updatedBook;
+    } catch (error) {
+        console.log({error});
+    }
+}
 const create = async(Todo)=>{
     try {
         const newBook = await API.graphql(graphqlOperation(createTodo,{input: Todo}));
@@ -44,4 +53,4 @@ const onCreate = async(subscriptionFunction) => {
 
 
 
-export {list,create,onCreate,get};
+export {list,create,onCreate,get,update};
