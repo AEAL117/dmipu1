@@ -37,7 +37,13 @@ export default function CatalogoScreen() {
 
     async function updateBook(id,name, description, estatus, ISBN, cat, published) {
         console.log("SE EJECUTA LA FUNCION DE ACTUALIZAR");
-
+        if(estatus==="DISPONIBLE"){
+            estatus="RENTADO";
+        }else if(estatus==="RENTADO"){
+            estatus="DISPONIBLE";
+        }else if(!estatus){
+            estatus="RENTADO";
+        }
         const bookCreated = await update({id,name, description, estatus, ISBN, cat, published })
         return bookCreated;
     }
@@ -48,10 +54,9 @@ export default function CatalogoScreen() {
         <ScrollView>
             <View style={styles.container}>
                 {books && books.map((book) =>
-                    
                     <>                   
                     <Text>Nombre: {`${book.name}`}</Text><Text>Descripción: {`${book.description} `}</Text><Text>Estatus: {`${book.estatus} `}</Text><Text>ISBN: {`${book.ISBN}`}</Text><Text>Categoría: {`${book.cat}`}</Text><Text style={{ marginBottom: 20 }}>Fecha de Publicación: {`${book.published}`}</Text>
-                    <ButtonComponent title={`${book.estatus} `} onPress={() => updateData(book)}/>
+                    <ButtonComponent title="Disponibilidad" onPress={() => updateData(book)}/>
                     <ButtonComponent title="Eliminar" color="#EA4B4B" onPress={() =>deleteData(book)}/>
                     </>
                     

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Text, View, TextInput, Picker } from 'react-native';
+import { Text, View, TextInput, Picker,ScrollView } from 'react-native';
 import { styles } from "./Home.styles";
 import ButtonComponent from "../../components/Button";
 
@@ -33,6 +33,7 @@ export default function HomeScreen() {
 
 
     return (
+        <ScrollView>
         <View style={styles.container}>
             <Text>Nombre</Text>
             <TextInput
@@ -83,5 +84,6 @@ export default function HomeScreen() {
             />
             <ButtonComponent title="ALTA" onPress={addData} />
         </View>
+        </ScrollView>
     );
 }
