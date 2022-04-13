@@ -1,5 +1,5 @@
 import React, {createContext, useState} from "react";
-import {list} from "../../services/Books";
+import {list,get} from "../../services/Books";
 import { Auth } from 'aws-amplify';
 
 const initialState={
@@ -11,6 +11,7 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({children}) => {
     const [state, setState] = useState(initialState);
     const [books, setBooks] = useState();
+    const [book,setBook] = useState();
     const [usuario, setUsuario] = useState(Auth.user.username);
 
     function login(email, pwd){
@@ -31,8 +32,15 @@ export const GlobalProvider = ({children}) => {
         if(booksFetched) setBooks(booksFetched);
     }
 
+    async function getBook(id){
+        console.log("getBook() se ejecuta");
+        const bookFetched = await get(id);
+        if(bookFetched)  setBook(bookFetched);
+        
+    }
+
     return(
-        <GlobalContext.Provider value={{ state, login, logout, listBooks, books, usuario}}>
+        <GlobalContext.Provider value={{ state, login, logout, listBooks,getBook, books, usuario,book}}>
             {children}
         </GlobalContext.Provider>
     );
