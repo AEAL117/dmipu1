@@ -4,15 +4,15 @@ import { styles } from "./Catalogo.styles";
 import ButtonComponent from "../../components/Button";
 import { GlobalContext } from "../../context/global/global.context";
 import { update,deleted} from "../../services/Books";
-
 export default function CatalogoScreen() {
     const { listBooks, books } = useContext(GlobalContext);
     const { getBook, book} = useContext(GlobalContext);
+
     
     useEffect(() => {
         listBooks();
        //getBook("76c6fa24-20e2-4172-93c0-3bd9deaa2228");
-    }, [])
+    }, [book])
 
     function getTodo (id) {
 
@@ -20,8 +20,14 @@ export default function CatalogoScreen() {
     }
 
     const deleteData= (book)=> {
-
+        
         deleteTodo(book.id, book.name, book.description, book.estatus, book.ISBN, book.cat, book.published);
+        getTodo(book.id);
+    }
+    
+    const updateData = (book) => {
+        updateBook(book.id, book.name, book.description, book.estatus, book.ISBN, book.cat, book.published);
+        getTodo(book.id);
     }
     async function deleteTodo(id,name, description, estatus, ISBN, cat, published){
         console.log("SE EJECUTA LA FUNCION DE ELIMINAR");
@@ -36,9 +42,6 @@ export default function CatalogoScreen() {
         return bookCreated;
     }
 
-    const updateData = (book) => {
-        updateBook(book.id, book.name, book.description, book.estatus, book.ISBN, book.cat, book.published);
-    }
 
     
     return (

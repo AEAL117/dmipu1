@@ -35,7 +35,7 @@ export const GlobalProvider = ({children}) => {
     async function getBook(id){
         console.log("getBook() se ejecuta");
         const bookFetched = await get(id);
-        if(bookFetched)  setBook(bookFetched);
+        setBook(bookFetched);
     }
 
     return(
