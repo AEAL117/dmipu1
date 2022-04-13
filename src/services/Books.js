@@ -41,7 +41,15 @@ const create = async(Todo)=>{
         console.log({error})
     }
 }
-
+const deleted = async(Todo)=>{
+try {
+    const deletedBook = await API.graphql(graphqlOperation(deleteTodo,{input: Todo}));
+        console.log(deletedBook);
+        return deletedBook;
+} catch (error) {
+    console.log({error});
+}
+}
 const onCreate = async(subscriptionFunction) => {
     const subscription = API.graphql(graphqlOperation(onCreateTodo)).subscribe({
         next:(BookData) => {
@@ -53,4 +61,4 @@ const onCreate = async(subscriptionFunction) => {
 
 
 
-export {list,create,onCreate,get,update};
+export {list,create,onCreate,get,update,deleted};
